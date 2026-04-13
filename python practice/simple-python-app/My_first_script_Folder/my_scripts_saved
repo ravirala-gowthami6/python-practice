@@ -1,0 +1,350 @@
+# import os
+# import shutil # Deenni Extra ga add chesa, folders delete cheyadaniki idi chala useful
+
+# ==========================================
+# TOPIC 1: CURRENT LOCATION (CWD)
+# ==========================================
+# print("Script ippudu ee folder lo undi:", os.getcwd())
+
+
+# ==========================================
+# TOPIC 2: CREATE NEW FOLDER
+# ==========================================
+# folder_name = "DevOps_Practice_Folder"
+# if not os.path.exists(folder_name):
+#     os.makedirs(folder_name)
+#     print(f"'{folder_name}' create ayyindi!")
+# else:
+#     print("Folder munde undi.")
+
+
+# ==========================================
+# TOPIC 3: LIST ALL FILES & FOLDERS
+# ==========================================
+# items = os.listdir('.')
+# print("Folder lo unna items anni:")
+# for item in items:
+#     print("-", item)
+
+
+# ==========================================
+# TOPIC 4: RENAME A FILE
+# ==========================================
+# # Note: Mee folder lo 'old.txt' ane file munde undali test cheyali ante
+# if os.path.exists('old.txt'):
+#     os.rename('old.txt', 'new_name.txt')
+#     print("File name marchanu!")
+
+
+# ==========================================
+# TOPIC 5: CHECK FILE SIZE & DETAILS
+# ==========================================
+# file_path = 'app.py' # Mee daggara unna file peru ivvandi
+# if os.path.exists(file_path):
+#     stats = os.stat(file_path)
+#     print(f"File Size: {stats.st_size} bytes")
+#     print(f"Last modified: {stats.st_mtime}")
+
+
+# ==========================================
+# TOPIC 6: DELETE A FILE
+# ==========================================
+# file_to_delete = 'junk.txt'
+# if os.path.exists(file_to_delete):
+#     os.remove(file_to_delete)
+#     print(f"{file_to_delete} delete ayyindi.")
+
+
+# ==========================================
+# TOPIC 7: DELETE A WHOLE FOLDER (CAREFUL!)
+# ==========================================
+# # Empty folder kakunda, lopala files unna folder ni delete cheyali ante:
+# folder_to_remove = "DevOps_Practice_Folder"
+# if os.path.exists(folder_to_remove):
+#     shutil.rmtree(folder_to_remove)
+#     print(f"Motham folder '{folder_to_remove}' delete ayyindi.")
+
+
+# ==========================================
+# PYTHON LISTS - MASTER SCRIPT
+# ==========================================
+
+# 1. Creating a List (Oka list ni create cheyadam)
+# servers = ["Web-Server", "DB-Server", "App-Server"]
+# print(f"Initial Server List: {servers}")
+
+# # 2. Append (Kotha server ni list ki add cheyadam)
+# servers.append("Backup-Server")
+# print(f"After Append: {servers}")
+
+# # 3. Indexing (List lo unna 1st item ni matrame chudadam)
+# # Python lo numbering 0 nundi start avthundi. So 0 ante 1st item.
+# print(f"First Server in the list: {servers[0]}")
+
+# # 4. Length (List lo motham enni servers unnayi?)
+# count = len(servers)
+# print(f"Total Number of Servers: {count}")
+
+# # 5. Remove (List nundi oka item ni delete cheyadam)
+# servers.remove("DB-Server")
+# print(f"After Removing DB-Server: {servers}")
+
+# # 6. Check if exists (List lo oka item undo ledo chudadam)
+# search_item = "Web-Server"
+# if search_item in servers:
+#     print(f"Yes! {search_item} is in the list.")
+# else:
+#     print(f"No! {search_item} is not found.")
+
+# # 7. Sorting (List ni alphabetic order lo pettadam)
+# servers.sort()
+# print(f"Sorted Server List: {servers}")
+
+
+
+
+# import os
+
+# # 1. Function Define cheyadam (Oka 'Mini Machine' laantidi)
+# def create_safe_folder(folder_name):
+#     """Ee function folder ni jagrathaga create chesthundhi."""
+#     try:
+#         if not os.path.exists(folder_name):
+#             os.makedirs(folder_name)
+#             print(f"✅ Success: '{folder_name}' create ayyindi!")
+#         else:
+#             print(f"ℹ️ Info: '{folder_name}' munde undi.")
+            
+#     except Exception as e:
+#         # Oka vela permissions lekapothe leda inkemaina error osthe idi catch chesthundhi
+#         print(f"❌ Error: Folder create cheyalekapoyanu. Reason: {e}")
+
+# # 2. Function ni pilavadam (Calling)
+# # Ippudu meeru enni folders aina okka line tho create cheyachu
+# create_safe_folder("Logs_2026")
+# create_safe_folder("Backups_April")
+
+# # 3. List tho kalipi Function vadadam
+# server_list = ["Web", "DB", "App"]
+# for s in server_list:
+#     create_safe_folder(f"Server_{s}_Logs")
+
+
+# ------------------
+
+# # 1. Dictionary {Key: Value}
+# # 'prod' anedi Key, IP address anedi Value
+# server_info = {
+#     "prod": "192.168.1.10",
+#     "test": "192.168.1.20",
+#     "dev": "192.168.1.30"
+# }
+
+# # 2. User input (Meeru terminal lo type cheyali)
+# env = input("Ae environment IP kaavali? (prod/test/dev): ")
+
+# # 3. If-Else Logic (Decision Making)
+# if env in server_info:
+#     ip = server_info[env]
+#     print(f"Connecting to {env} server at IP: {ip}...")
+# else:
+#     print("Invalid environment! Please enter prod, test, or dev.")
+
+
+# import os
+
+# # 1. Dictionary lo mapping pettukunnam
+# # Environment peru : Folder peru
+# env_folders = {
+#     "prod": "Production_Logs",
+#     "test": "Testing_Logs",
+#     "dev": "Development_Logs"
+# }
+
+# # 2. User nundi input teesukuntunnam
+# user_choice = input("Ae environment folder create cheyali? (prod/test/dev): ").lower()
+
+# # 3. Logic: User ichina input mana dictionary lo undo ledo check chesthunnam
+# if user_choice in env_folders:
+#     target_folder = env_folders[user_choice]
+    
+#     # Patha knowledge: Folder munde undo ledo check chesi create cheyadam
+#     if not os.path.exists(target_folder):
+#         os.makedirs(target_folder)
+#         print(f"Success: '{target_folder}' create ayyindi!")
+#     else:
+#         print(f"Info: '{target_folder}' munde undi.")
+# else:
+#     # Invalid input isthe user ki cheppadam
+#     print("Error: Invalid choice! Please enter prod, test, or dev.")
+
+
+# # ---------------
+# import os
+
+# def check_disk_space():
+#     # Real-time lo idi disk chusthundi, ikkada just message isthunnam
+#     print("Disk Space: 80% free (Everything looks good!)")
+
+# def create_project_structure(project_name):
+#     folders = ["src", "logs", "config", "docs"]
+#     for folder in folders:
+#         path = os.path.join(project_name, folder)
+#         if not os.path.exists(path):
+#             os.makedirs(path)
+#             print(f"Created: {path}")
+
+
+# # Meeru rasiina devops_tools file ni ikkada import chesthunnam
+# import devops_tools
+
+# print("--- DevOps Automation System Started ---")
+
+# # Tool 1 ni vadatam
+# devops_tools.check_disk_space()
+
+# # Tool 2 ni vadatam
+# project = input("Enter project name: ")
+# devops_tools.create_project_structure(project)
+
+# print("--- Task Completed ---")
+
+
+
+
+# import devops_tools
+
+# print("--- DevOps Cleanup Started ---")
+
+# # Meeru create chesina project peru ikkada ivvandi (e.g., sai)
+# project_name = input("Enter project name to delete: ")
+
+# # devops_tools lo unna remove function ni call chesthunnam
+# devops_tools.create_project_structure(project_name)
+
+# print("--- Done ---")
+
+
+# # 'w' ante Write mode. File ni create chesthundi.
+# with open("devops_log.txt", "w") as f:
+#     f.write("Project: Azure Migration\n")
+#     f.write("Status: In Progress\n")
+#     f.write("Started by: Saikumar\n")
+
+# print("File create ayyindi, data save ayindi!")
+
+
+# # 'r' ante Read mode.
+# with open("devops_log.txt", "r") as f:
+#     data = f.read()
+#     print("\n--- File Data ---")
+#     print(data)
+
+
+# import json
+
+# # 1. Mana daggara unna Data (Dictionary)
+# server_config = {
+#     "server_name": "Azure-Prod-01",
+#     "ip_address": "10.0.0.4",
+#     "services": ["Nginx", "Docker", "Python"],
+#     "is_active": True
+# }
+
+# # 2. Dictionary ni .json file loki rayadam (Writing JSON)
+# with open("config.json", "w") as f:
+#     # 'indent=4' pedithe file chudadaniki neat ga untundi
+#     json.dump(server_config, f, indent=4)
+
+# print("✅ Server config JSON file lo save ayyindi!")
+
+# # 3. JSON file nundi data chadavadam (Reading JSON)
+# with open("config.json", "r") as f:
+#     data = json.load(f)
+#     print("\n--- JSON nundi vachina Data ---")
+#     print(f"Server Name: {data['server_name']}")
+#     print(f"IP: {data['ip_address']}")
+
+
+# import subprocess
+
+# # 1. Simple Command: IP Address check cheyadam (Windows lo 'ipconfig', Linux lo 'ifconfig')
+# print("--- Network Details checking ---")
+# # 'capture_output=True' ante terminal lo vache output ni Python memory loki teesukuntundi
+# result = subprocess.run(["ipconfig"], capture_output=True, text=True)
+# print(result.stdout)
+
+# # 2. Check Directory Items (ls leda dir)
+# print("--- Files in current folder ---")
+# files = subprocess.run(["dir"], shell=True, capture_output=True, text=True)
+# print(files.stdout)
+
+# # 3. Automation Task: Ping a website
+# # Idi website pani chesthundo ledo check chesthundhi
+# host = "google.com"
+# print(f"--- Pinging {host} ---")
+# ping_res = subprocess.run(["ping", "-n", "2", host], capture_output=True, text=True)
+# print(ping_res.stdout)
+
+
+# import requests
+
+# # 1. GitHub API URL (Google vari details kosam)
+# url = "https://api.github.com/users/google"
+
+# # 2. GET Request pampadam (Data adagadam)
+# response = requests.get(url)
+
+# # 3. Logic: Status 200 ante 'Success' ani artham
+# if response.status_code == 200:
+#     # Vachina data JSON format lo untundi, danni dictionary ga marchali
+#     data = response.json()
+    
+#     print("--- GitHub User Info ---")
+#     print(f"Name: {data['name']}")
+#     print(f"Public Repos: {data['public_repos']}")
+#     print(f"Bio: {data['bio']}")
+# else:
+#     print(f"Error: Data dorakaledu. Status code: {response.status_code}")
+
+
+
+# import requests # Internet lo unna GitHub thoni matladadaniki ee library vaadatharu.
+
+# # Ivi 'Variables' - Mana identification and address details dachevi.
+# GITHUB_TOKEN = "your_token" # GitHub door (API) open cheyadaniki idi mee key.
+# REPO_OWNER = "your_username" # Account holder peru.
+# REPO_NAME = "your_repo" # Ee folder (repo) lo issue create cheyalo chepthunnam.
+
+# # IDI MAIN: Ee URL GitHub API daggarki velle 'Address'.
+# url = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/issues"
+
+# # Headers: Idi meeru API ki chupinche Identity Card. 
+# # "Authorization" lo mee token pampisthe ne GitHub mimmalni lopalaki ranisthundi.
+# headers = {
+#     "Authorization": f"token {GITHUB_TOKEN}",
+#     "Accept": "application/vnd.github.v3+json" # Idhi "Naku JSON format lo output ivvu" ani adagadam.
+# }
+
+# # Payload: Meeru pampalsina actual 'Note' or 'Message'.
+# issue_data = {
+#     "title": "Critical: Server Down Alert", # Issue ki oka peru (Subject).
+#     "body": "Monitoring system detected...", # Issue lo em jarigindho detailed matter.
+#     "labels": ["bug", "critical"] # Dhaaniki tags ivvadam (Red color lo bug ani kanipisthundi).
+# }
+
+# # POST Request: 'requests.post' ante "Teesko, idhi create cheyi" ani pampadam.
+# # (URL, Data, and ID card anni kalipi pampisthunnam).
+# response = requests.post(url, json=issue_data, headers=headers)
+
+# # Result Check: 
+# # status_code 201 ante GitHub nundi "Pani ayyindi, issue create chesa" ani message raavadam.
+# if response.status_code == 201:
+#     print("✅ Success: Issue create ayyindi!")
+# else:
+#     print(f"❌ Error: {response.status_code}") # Edo thappu jarigindi ani artham.
+
+
+
+
+
