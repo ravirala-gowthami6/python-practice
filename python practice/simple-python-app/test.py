@@ -36,4 +36,4 @@ if response.status_code == 201: # 201 ante 'Created' ani artham
     print("✅ Success: Issue create ayyindi!")
 else:
     print(f"❌ Error: {response.status_code}")
-    print(response.text)
+    print(response.text)  
